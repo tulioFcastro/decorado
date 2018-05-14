@@ -1,4 +1,3 @@
-export * from './users/users.component';
-export * from './users/users.route';
-export * from './login/login.component';
-export * from './login/login.route';
+export * from './users';
+export * from './login';
+export * from './not-found';

@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { AuthGuard } from '../../auth';
-// import { exampleRoute, exampleDetailsRoute } from '../../entities';
+import { AuthGuard } from '../auth';
 
 export const mainRoute: Routes = [
   {
@@ -10,13 +9,6 @@ export const mainRoute: Routes = [
     component: MainComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    children: [
-      // exampleRoute,
-      // exampleDetailsRoute
-    ]
-  },
-  {
-    path: '**',
-    redirectTo: '/login'
+    loadChildren: 'app/entities/entities.module#EntitiesModule'
   }
 ];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../../services';
+import { AuthService } from '../../../services';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -13,11 +13,10 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     // redirect and return false
-    if (!UserService.isAuthenticated()) {
+    if (!AuthService.isAuthenticated()) {
       this.router.navigate(['/login']);
       return false;
     } else {
-
       // TODO method to check if userToken is valid
       return true;
     }

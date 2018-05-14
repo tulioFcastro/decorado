@@ -1,17 +1,19 @@
 import { NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { LayoutRoutingModule } from './layout/layout-routing.module';
-import { loginRoute } from './entities';
-import { mainRoute } from './layouts';
+import { mainRoute } from './main';
+import { EntitiesRoutingModule } from './entities/entities-routing.module';
 
 const routes: Routes = [
-  loginRoute,
-  ...mainRoute
+  ... mainRoute,
+  {
+    path: '**',
+    redirectTo: 'not-found'
+  }
 ];
 
 @NgModule({
   imports: [
-    // LayoutRoutingModule,
+    EntitiesRoutingModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

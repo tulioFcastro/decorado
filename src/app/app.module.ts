@@ -4,20 +4,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
+import { MainComponent } from './main';
+
 import {
-  MainComponent,
   SideBarComponent,
   NavBarComponent
 } from './layouts';
+
 import {
-  GeneralService,
-  UserService
+  AuthService,
+  GeneralService
 } from './services';
+
 import { AppRoutingModule } from './app-routing.module';
+
 import { EntitiesModule } from './entities/entities.module';
+
 import {
-  AuthGuard,
-  LoginGuard
+AuthGuard,
+LoginGuard
 } from './auth';
 
 @NgModule({
@@ -38,7 +44,7 @@ import {
   providers: [
     AuthGuard,
     LoginGuard,
-    UserService,
+    AuthService,
     GeneralService
   ],
   bootstrap: [AppComponent]
