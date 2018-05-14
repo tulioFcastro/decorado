@@ -9,12 +9,13 @@ import {
   UsersComponent,
   NotFoundComponent
 } from './';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     EntitiesRoutingModule,
-    AppMaterialModules
+    SharedModule
   ],
   declarations: [
     LoginComponent,

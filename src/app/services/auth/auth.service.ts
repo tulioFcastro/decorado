@@ -1,21 +1,45 @@
 import { Injectable } from '@angular/core';
+import { GeneralService } from '../general/general.service';
+import { Observable } from 'rxjs/Observable';
+import { filter } from 'rxjs/operators';
+import { User } from '../../User';
 
 @Injectable()
 export class AuthService {
 
-  static AUTH_TOKEN = 'authToken';
+  AUTH_TOKEN = 'authToken';
 
-  constructor() {}
+  constructor(private generalService: GeneralService) {}
 
-  static isAuthenticated() {
+  isAuthenticated() {
     return !!localStorage.getItem(this.AUTH_TOKEN);
   }
 
-  static logout() {
+  logout() {
     localStorage.removeItem(this.AUTH_TOKEN);
   }
 
-  static storeToken(token) {
+  login(data) {
+    this.generalService.getUsers().subscribe(
+      (users) => {
+        for (let user in users) {
+          let tempUser = users[user];
+          if (tempUser['login'] === data['login'] && tempUser['password'] === data['password']) {
+            console.log(tempUser);
+            return tempUser;
+          }
+        }
+        return null;
+      },
+      (error) => {
+        return null;
+      });
+  }
+
+  findUserByLogin(login, users) {
+    return users.filter(user => user.login === login)[0];
+  }
+  storeToken(token) {
     localStorage.setItem(this.AUTH_TOKEN, token);
   }
 }

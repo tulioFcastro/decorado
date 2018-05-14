@@ -1,75 +1,29 @@
-<!--<div class="row d-flex align-items-center justify-content-center">-->
-<!--<div class="col-xs-12 col-md-6 col-lg-4">-->
-<!--<img class="icon my-2" src="assets/images/icon.png">-->
-<!--<div class="jumbotron">-->
-<!--&lt;!&ndash;<form [formGroup]="form" (ngSubmit)="submitForm(form.value)">&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="bootstrap-alert">&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication"></div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="form-group" [ngClass]="{'has-error':form.hasError(username)}">&ndash;&gt;-->
-<!--&lt;!&ndash;<label jhiTranslate="global.form.username">Login&ndash;&gt;-->
-<!--&lt;!&ndash;</label>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
-<!--&lt;!&ndash;<input class="form-control login-control" #usernameFocus type="text" placeholder="Login" [maxlength]="255" formControlName="username" autofocus>&ndash;&gt;-->
-<!--&lt;!&ndash;<span class="input-group-addon"><i class="material-icons">person_outline</i></span>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<div class="form-group" [ngClass]="{'has-error':form.hasError(password)}">&ndash;&gt;-->
-<!--&lt;!&ndash;<label jhiTranslate="login.form.password">Password</label>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
-<!--&lt;!&ndash;<input class="form-control login-control" type="password" placeholder="Password" [maxlength]="255" formControlName="password">&ndash;&gt;-->
-<!--&lt;!&ndash;<span class="input-group-addon"><i class="material-icons">lock_outline</i></span>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="d-flex justify-content-end mt-2">&ndash;&gt;-->
-<!--&lt;!&ndash;<a class="forgot-password" jhiTranslate="login.password.forgot" routerLink="/reset/request">Esqueceu sua senha?</a>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<button jhiTranslate="login.form.button" type="submit" class="btn btn-primary btn-lg w-100">Sign In</button>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="text-center mt-3">&ndash;&gt;-->
-<!--&lt;!&ndash;<span jhiTranslate="login.form.newAccount">Ainda não possui uma conta?</span>&ndash;&gt;-->
-<!--&lt;!&ndash;<a class="register-link" jhiTranslate="login.form.register" routerLink="/users/sign_up">Cadastre-se</a>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</form>&ndash;&gt;-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<div class="limiter">
-  <div class="container-login100">
-    <div class="wrap-login100 p-t-85 p-b-20">
-      <span class="login100-form-avatar">
+<div class="container-login">
+  <div class="wrap-login">
+      <span class="login-form-avatar">
         <img src="assets/images/icon.png" alt="AVATAR">
       </span>
-      <span class="login100-form-title p-b-70">
+    <span class="login-form-title">
           Bem-vindo
       </span>
-      <form class="login100-form validate-form">
+    <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
 
-        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
-          <!--<input class="input100" type="text">-->
-          <!--<span class="focus-input100" data-placeholder="Username"></span>-->
-          <mat-form-field class="mat-input-field">
-            <input matInput placeholder="Login" type="text">
-          </mat-form-field>
-        </div>
+      <mat-form-field class="mat-input-field">
+        <input autofocus matInput placeholder="Login" type="text" required [formControl]="form.controls['userLogin']">
+      </mat-form-field>
 
-        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-          <!--<input class="input100" type="password">-->
-          <!--<span class="focus-input100" data-placeholder="Password"></span>-->
-          <mat-form-field class="mat-input-field">
-            <!--<input matInput placeholder="Senha" type="password">-->
-            <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-          </mat-form-field>
-        </div>
+      <mat-form-field class="mat-input-field">
+        <input matInput placeholder="Senha" required [formControl]="form.controls['password']"
+               [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
 
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
+      <div class="container-login-form-btn">
+        <button type="submit" [disabled]="form.invalid" [ngClass]="{'disable-login-button': form.invalid}"
+                class="login-form-btn">
+          Login
+        </button>
+      </div>
+    </form>
   </div>
 </div>
