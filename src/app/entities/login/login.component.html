@@ -7,13 +7,15 @@
           Bem-vindo
       </span>
     <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
-
+        <span class="login-error" [hidden]="!loginError">
+          Credenciais inválidas. Tente novamente.
+        </span>
       <mat-form-field class="mat-input-field">
-        <input autofocus matInput placeholder="Login" type="text" required [formControl]="form.controls['userLogin']">
+        <input autofocus matInput placeholder="Login" onchange="loginError = false" (change)="loginError = false" type="text" required [formControl]="form.controls['userLogin']">
       </mat-form-field>
 
       <mat-form-field class="mat-input-field">
-        <input matInput placeholder="Senha" required [formControl]="form.controls['password']"
+        <input matInput placeholder="Senha" onchange="loginError = false" (change)="loginError = false" required [formControl]="form.controls['password']"
                [type]="hide ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>

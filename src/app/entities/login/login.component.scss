@@ -117,3 +117,8 @@ button:hover {
 .disable-login-button {
   cursor: not-allowed !important;
 }
+
+.login-error {
+  color: red;
+  font-size: 12px;
+}

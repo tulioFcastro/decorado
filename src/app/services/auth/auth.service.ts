@@ -20,24 +20,30 @@ export class AuthService {
   }
 
   login(data) {
-    this.generalService.getUsers().subscribe(
-      (users) => {
-        for (let user in users) {
-          let tempUser = users[user];
-          if (tempUser['login'] === data['login'] && tempUser['password'] === data['password']) {
-            console.log(tempUser);
-            return tempUser;
+    return new Promise((resolve, reject) => {
+      this.generalService.getUsers().subscribe(
+        (users) => {
+          for (let user in users) {
+            let tempUser = users[user];
+            if (tempUser['login'] === data['login'] && tempUser['password'] === data['password']) {
+              this.storeToken(this.encode(JSON.stringify(tempUser)));
+              resolve('User authenticated');
+            }
           }
-        }
-        return null;
-      },
-      (error) => {
-        return null;
-      });
+          reject('Unauthenticated user');
+        },
+        (error) => {
+          reject('Error in authentication');
+        });
+    });
   }
 
-  findUserByLogin(login, users) {
-    return users.filter(user => user.login === login)[0];
+  encode (object) {
+    return btoa(object);
+  }
+
+  decode (object) {
+    return atob(object);
   }
   storeToken(token) {
     localStorage.setItem(this.AUTH_TOKEN, token);
