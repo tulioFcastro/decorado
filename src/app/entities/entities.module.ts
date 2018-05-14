@@ -6,11 +6,13 @@ import {
   LoginComponent,
   UsersComponent
 } from './';
+import { AppMaterialModules } from '../material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    EntitiesRoutingModule
+    EntitiesRoutingModule,
+    AppMaterialModules
   ],
   declarations: [
     LoginComponent,
