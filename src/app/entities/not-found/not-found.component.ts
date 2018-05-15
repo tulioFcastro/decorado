@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { slideToRight } from '../../shared/animations';
 
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.scss']
+  styleUrls: ['./not-found.component.scss'],
+  animations: [slideToRight()],
+  host: {'[@slideToRight]': ''}
 })
 export class NotFoundComponent implements OnInit {
 

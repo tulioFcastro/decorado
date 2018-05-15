@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../../../services/';
+import { AuthService, EventEmitterService } from '../../../services/';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -13,9 +13,11 @@ export class LoginGuard implements CanActivate {
 
     // redirect and return false
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/users']);
+      EventEmitterService.get('userLogged').emit('userLogged');
       return false;
     } else {
+      EventEmitterService.get('userNotLogged').emit('userNotLogged');
       return true;
     }
   }

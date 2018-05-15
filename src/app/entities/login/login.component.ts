@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           console.log(data);
           this.clearForm();
-          this.router.navigate(['/']);
+          this.router.navigate(['/users']);
         }, (err) => {
           console.log(err);
           this.clearForm();

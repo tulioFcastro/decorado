@@ -15,7 +15,8 @@ import {
 
 import {
   AuthService,
-  GeneralService
+  GeneralService,
+  EventEmitterService
 } from './services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +52,8 @@ import { SharedModule } from './shared/shared.module';
     AuthGuard,
     LoginGuard,
     AuthService,
-    GeneralService
+    GeneralService,
+    EventEmitterService
   ],
   bootstrap: [AppComponent]
 })
