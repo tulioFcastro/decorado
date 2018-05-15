@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppMaterialModules } from '../material.module';
 import { CommonModule } from '@angular/common';
+import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   imports: [
@@ -10,7 +12,9 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppMaterialModules
+    AppMaterialModules,
+    BsDropdownModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   exports: [
     HttpClientModule,

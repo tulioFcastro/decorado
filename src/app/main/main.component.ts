@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { slideToRight } from '../shared/animations';
+import {AuthService} from '../services';
 
 @Component({
   selector: 'app-main',
@@ -11,10 +12,15 @@ import { slideToRight } from '../shared/animations';
 export class MainComponent implements OnInit {
 
   sidebarClose = false;
-
-  constructor() { }
+  isAuth = false;
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.checkIfIsAuthenticated();
+  }
+
+  checkIfIsAuthenticated() {
+    this.isAuth = this.authService.isAuthenticated();
   }
 
   closeSidebar(isOpen) {
