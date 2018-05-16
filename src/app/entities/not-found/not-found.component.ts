@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { slideToRight } from '../../shared/animations';
+import { slideToRight } from '../../shared';
 
 @Component({
   selector: 'app-not-found',

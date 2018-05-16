@@ -1,3 +1,57 @@
-<p>
-  users works!
-</p>
+<div class="container-users">
+  <div class="button-row" [hidden]="!isAdminUser()">
+    <button mat-raised-button class="new-user" (click)="openModal(template)">Novo Usuário</button>
+  </div>
+
+  <div *ngFor="let user of users" class="card" aria-controls="collapseCard">
+    <div class="row adjusts-list-users">
+      <div class="adjust-padding-userLogin col align-self-start clickable-col"
+           (click)="closeCollapsedDivs(user)">
+        {{user.login}}
+      </div>
+      <div class="adjust-padding align-self-end">
+        <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
+          <i class="fa fa-ellipsis-v"></i>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item data-toggle="modal" data-target="#exampleModal">Modal</button>
+          <button mat-menu-item routerLink="/users">Usuários</button>
+        </mat-menu>
+      </div>
+    </div>
+    <app-collapse [collapsed]="user.collapse">
+      <div class="row">
+        <span class="col">
+          {{user.login}}
+        </span>
+        <span class="col">
+          {{user.profile}}
+        </span>
+      </div>
+    </app-collapse>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <app-new-user [modalRef]="modalRef" (createdUserEmmiter)="fetchUsers()"></app-new-user>
+</ng-template>

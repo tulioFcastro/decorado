@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { GeneralService } from '../general/general.service';
-import { Observable } from 'rxjs/Observable';
-import { filter } from 'rxjs/operators';
-import { User } from '../../User';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
   AUTH_TOKEN = 'authToken';
 
-  constructor(private generalService: GeneralService) {}
+  constructor(private generalService: GeneralService,
+              private router: Router) {}
 
   isAuthenticated() {
     return !!localStorage.getItem(this.AUTH_TOKEN);
@@ -45,7 +44,22 @@ export class AuthService {
   decode (object) {
     return atob(object);
   }
+
   storeToken(token) {
     localStorage.setItem(this.AUTH_TOKEN, token);
   }
+
+  getUserLogged(attr) {
+    try {const resp = JSON.parse(this.decode(localStorage.getItem(this.AUTH_TOKEN)));
+      if (attr) {
+        return resp[attr];
+      } else {
+        return resp;
+      }
+    } catch (e) {
+      localStorage.removeItem(this.AUTH_TOKEN);
+      this.router.navigate(['/login']);
+    }
+  }
+
 }

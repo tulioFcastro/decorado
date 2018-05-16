@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { slideToRight } from '../../shared/animations';
+import { slideToRight } from '../../shared';
 
 @Component({
   selector: 'app-login',

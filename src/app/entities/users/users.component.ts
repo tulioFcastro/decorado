@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { GeneralService } from '../../services';
-import { slideToRight } from '../../shared/animations';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AuthService, GeneralService } from '../../services';
+import { slideToRight } from '../../shared';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-users',
@@ -11,13 +13,45 @@ import { slideToRight } from '../../shared/animations';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private generalService: GeneralService) { }
+  users = [];
+  modalRef: BsModalRef;
+
+  constructor(private generalService: GeneralService,
+              private authService: AuthService,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
+    this.fetchUsers();
+  }
+
+  fetchUsers() {
     this.generalService.getUsers().subscribe(
-      users => (console.log(users)),
-      error => (console.log(error))
+      (users) => {
+        this.users = []
+        for (let user in users) {
+          let tempUser = users[user];
+          tempUser['collapse'] = true;
+          this.users.push(tempUser);
+        }
+      },
+      (error) => (console.log(error))
     );
+  }
+  closeCollapsedDivs(actualUser) {
+    this.users
+      .filter((user) => user.collapse === false && user.id !== actualUser.id)
+      .map((u) => {
+        u.collapse = true;
+      });
+    actualUser.collapse = !actualUser.collapse;
+  }
+
+  isAdminUser() {
+    return this.authService.getUserLogged('profile') === 'ADMIN';
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

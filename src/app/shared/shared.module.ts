@@ -5,6 +5,8 @@ import { AppMaterialModules } from '../material.module';
 import { CommonModule } from '@angular/common';
 import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CollapseComponent } from './';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -14,13 +16,18 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     ReactiveFormsModule,
     AppMaterialModules,
     BsDropdownModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ModalModule.forRoot()
   ],
   exports: [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppMaterialModules
+    AppMaterialModules,
+    CollapseComponent
+  ],
+  declarations: [
+    CollapseComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,3 +1,5 @@
+@import '../../../sass/mixins/default';
+
 .menu-button {
   float: right;
 }
@@ -5,4 +7,8 @@
 .menu-button:focus {
   outline: none !important;
   border: none;
+}
+
+nav {
+  background-color: $decorado-color;
 }

@@ -1,0 +1,37 @@
+@import '../../../sass/default';
+
+.container-users {
+  padding: 15px;
+}
+
+.menu-button {
+  float: right;
+}
+
+.clickable-col {
+  cursor: pointer;
+}
+
+.adjust-padding-userLogin {
+  padding: 16px;
+}
+
+.adjust-padding {
+  padding: 10px;
+}
+
+.adjusts-list-users {
+  margin: 0;
+}
+
+.button-row {
+  padding-bottom: 15px;
+}
+
+.new-user {
+  background-color: $decorado-color;
+}
+
+.modal-header .close {
+  padding: 21px 15px;
+}

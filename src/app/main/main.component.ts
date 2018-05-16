@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { slideToRight } from '../shared/animations';
 import {AuthService} from '../services';
+import { slideToRight } from '../shared';
 
 @Component({
   selector: 'app-main',

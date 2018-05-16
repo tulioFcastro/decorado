@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="saveUser()">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Novo Usuário</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <span class="create-user-error" [hidden]="!submitError">
+      Credenciais inválidas. Tente novamente.
+    </span>
+
+    <div class="row">
+      <mat-form-field class="col mat-input-field">
+        <input autofocus matInput placeholder="Login" onchange="submitError = false" (change)="submitError = false" type="text" required [formControl]="form.controls['userLogin']">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col mat-input-field">
+        <input matInput placeholder="Senha" onchange="submitError = false" (change)="submitError = false" required [formControl]="form.controls['password']"
+               [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col mat-input-field">
+        <input matInput placeholder="Name" onchange="submitError = false" (change)="submitError = false" type="text" required [formControl]="form.controls['name']">
+      </mat-form-field>
+    </div>
+
+    <!--PROFILE-->
+    <mat-form-field>
+      <mat-select [(value)]="profileSelected" placeholder="Perfil do Usuário">
+        <mat-option *ngFor="let profile of profiles" [value]="profile.value">
+          {{ profile.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancelar</button>
+    <button type="submit" class="btn btn-default" [disabled]="form.invalid" [ngClass]="{'disable-button': form.invalid}">
+      Confirmar
+    </button>
+  </div>
+</form>

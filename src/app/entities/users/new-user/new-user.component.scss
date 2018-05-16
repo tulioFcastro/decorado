@@ -1,0 +1,10 @@
+@import '../../../../sass/default';
+
+.disable-button {
+  cursor: not-allowed;
+}
+
+.create-user-error {
+  color: red;
+  font-size: 12px;
+}

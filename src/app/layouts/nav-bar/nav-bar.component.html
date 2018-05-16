@@ -1,8 +1,8 @@
-<nav [hidden]="!isAuth" class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="col-md-11 col-sm-11 col-xs-11 clickable-col vertical-center">
-    <a class="navbar-brand">Navbar</a>
+<nav [hidden]="!isAuth" class="navbar navbar-expand-lg navbar-light">
+  <div class="col align-self-start vertical-center">
+    <a class="navbar-brand">Bem-vindo {{userLogin}}</a>
   </div>
-  <div class="col-md-1 col-sm-1 col-xs-1 vertical-center">
+  <div class="align-self-end">
     <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
       <i class="fa fa-ellipsis-v"></i>
     </button>

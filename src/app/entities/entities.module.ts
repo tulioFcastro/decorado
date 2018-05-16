@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EntitiesRoutingModule } from './entities-routing.module';
-import { AppMaterialModules } from '../material.module';
 
 import {
   LoginComponent,
   UsersComponent,
-  NotFoundComponent
+  NotFoundComponent,
+  NewUserComponent
 } from './';
 import { SharedModule } from '../shared/shared.module';
 
@@ -20,7 +20,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     UsersComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NewUserComponent
   ]
 })
 export class EntitiesModule {
