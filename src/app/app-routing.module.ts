@@ -4,6 +4,11 @@ import { EntitiesRoutingModule } from './entities/entities-routing.module';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     redirectTo: 'not-found'
   }
