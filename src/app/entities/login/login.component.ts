@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
         login: this.form.controls['userLogin'].value,
         password: this.form.controls['password'].value
       }).then(
-        (data) => {
-          console.log(data);
+        () => {
           this.clearForm();
           this.router.navigate(['/users']);
         }, (err) => {

@@ -3,10 +3,19 @@
 @import "../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 .cdk-overlay-container {
   z-index: 99999 !important;
 }
 
 .modal-body {
   background-color: #F4F4F4;
+  color: #3b5568;
+}
+
+.modal-header {
+  color: #3b5568;
 }
