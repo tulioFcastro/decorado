@@ -1,11 +1,13 @@
 <div class="container-users">
 
-  <div class="row">
-    <div *ngIf="isAdminUser()" class="col align-self-start button-row">
-      <button mat-raised-button class="new-user" (click)="openModal(templateNewUser, null)">Novo Usuário</button>
+  <div class="row header-row">
+    <div *ngIf="isAdminUser()" class="button-row">
+      <button mat-raised-button class="new-user" (click)="openModal(templateNewUser, null)">
+        <span>Novo Usuário</span>
+        <i class="fa fa-plus"></i>
+      </button>
     </div>
-
-    <app-search-user class="col align-self-end" (usersEmit)="searchedUsers($event)"></app-search-user>
+    <app-search-user class="search-box" (usersEmit)="searchedUsers($event)"></app-search-user>
   </div>
 
   <div *ngFor="let user of users" class="card" aria-controls="collapseCard">
@@ -28,33 +30,22 @@
     <app-collapse [collapsed]="user.collapse">
       <div class="row">
         <span class="col">
-          {{user.login}}
+          <mat-form-field class="mat-field-full-width">
+            <input matInput placeholder="Login" disabled value="{{user.login}}">
+          </mat-form-field>
         </span>
         <span class="col">
-          {{user.profile}}
+          <mat-form-field class="mat-field-full-width">
+            <input matInput placeholder="Nome" disabled value="{{user.name}}">
+          </mat-form-field>
+        </span>
+        <span class="col">
+          <mat-form-field class="mat-field-full-width">
+            <input matInput placeholder="Perfil" disabled value="{{user.profile}}">
+          </mat-form-field>
         </span>
       </div>
     </app-collapse>
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
   </div>
 </div>
 

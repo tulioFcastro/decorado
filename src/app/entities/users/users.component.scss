@@ -1,7 +1,13 @@
 @import '../../../sass/default';
 
 .container-users {
-  padding: 15px;
+  padding: 0 15px;
+  .header-row {
+    justify-content: space-between;
+    .search-box {
+      padding: 0 15px;
+    }
+  }
 }
 
 .menu-button {
@@ -25,13 +31,22 @@
 }
 
 .button-row {
-  padding-bottom: 15px;
+  padding: 15px;
 }
 
 .new-user {
   background-color: $decorado-color;
+  color: #FFFFFF;
 }
 
 .modal-header .close {
   padding: 21px 15px;
+}
+
+.card {
+  margin-bottom: 3px;
+}
+
+.mat-field-full-width {
+  width: 100%;
 }

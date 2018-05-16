@@ -59,7 +59,6 @@ export class SearchUserComponent implements OnInit {
         return of<User[]>([]);
       })
     );
-    console.log(this.users);
   }
 
 }
