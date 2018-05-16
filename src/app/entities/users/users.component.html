@@ -1,6 +1,6 @@
 <div class="container-users">
-  <div class="button-row" [hidden]="!isAdminUser()">
-    <button mat-raised-button class="new-user" (click)="openModal(template)">Novo Usuário</button>
+  <div *ngIf="isAdminUser()" class="button-row">
+    <button mat-raised-button class="new-user" (click)="openModal(templateNewUser, null)">Novo Usuário</button>
   </div>
 
   <div *ngFor="let user of users" class="card" aria-controls="collapseCard">
@@ -9,14 +9,14 @@
            (click)="closeCollapsedDivs(user)">
         {{user.login}}
       </div>
-      <div class="adjust-padding align-self-end">
+      <div *ngIf="isAdminUser()" class="adjust-padding align-self-end">
         <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
           <i class="fa fa-ellipsis-v"></i>
         </button>
 
         <mat-menu #menu="matMenu">
-          <button mat-menu-item data-toggle="modal" data-target="#exampleModal">Modal</button>
-          <button mat-menu-item routerLink="/users">Usuários</button>
+          <button mat-menu-item (click)="openModal(templateEditUser, user)">Editar</button>
+          <button mat-menu-item (click)="openModal(templateRemoveUser, user)">Remover</button>
         </mat-menu>
       </div>
     </div>
@@ -52,6 +52,15 @@
     </div>
   </div>
 </div>
-<ng-template #template>
+
+<ng-template #templateNewUser>
   <app-new-user [modalRef]="modalRef" (createdUserEmmiter)="fetchUsers()"></app-new-user>
+</ng-template>
+
+<ng-template #templateRemoveUser>
+  <app-delete-user [modalRef]="modalRef" [user]="selectedUser" (deletedUserEmmiter)="fetchUsers()"></app-delete-user>
+</ng-template>
+
+<ng-template #templateEditUser>
+  <app-edit-user [modalRef]="modalRef" [user]="selectedUser" (editedUserEmmiter)="fetchUsers()"></app-edit-user>
 </ng-template>

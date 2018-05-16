@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="deleteUser()">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Remover Usuário</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <span class="submit-error" [hidden]="!error">
+      Erro ao tentar remover usuário.
+    </span>
+
+    <span>Deseja Remover o usuário <b>{{user.login}}</b>?</span>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancelar</button>
+    <button type="submit" class="btn btn-default" [disabled]="form.invalid" [ngClass]="{'disable-button': form.invalid}">
+      Confirmar
+    </button>
+  </div>
+</form>

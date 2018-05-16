@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="saveUser()">
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Novo Usuário</h4>
+    <h4 class="modal-title pull-left">Editar Usuário</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,7 +9,7 @@
   <div class="modal-body">
 
     <span class="submit-error" [hidden]="!submitError">
-      Credenciais inválidas. Tente novamente.
+      Erro ao tentar editar usuário. Tente novamente mais tarde.
     </span>
 
     <div class="row">

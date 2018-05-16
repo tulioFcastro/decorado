@@ -3,6 +3,7 @@ import { AuthService, GeneralService } from '../../services';
 import { slideToRight } from '../../shared';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { User } from '../../User';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +16,7 @@ export class UsersComponent implements OnInit {
 
   users = [];
   modalRef: BsModalRef;
+  selectedUser;
 
   constructor(private generalService: GeneralService,
               private authService: AuthService,
@@ -37,6 +39,7 @@ export class UsersComponent implements OnInit {
       (error) => (console.log(error))
     );
   }
+
   closeCollapsedDivs(actualUser) {
     this.users
       .filter((user) => user.collapse === false && user.id !== actualUser.id)
@@ -50,7 +53,8 @@ export class UsersComponent implements OnInit {
     return this.authService.getUserLogged('profile') === 'ADMIN';
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, user: User) {
+    this.selectedUser = user;
     this.modalRef = this.modalService.show(template);
   }
 

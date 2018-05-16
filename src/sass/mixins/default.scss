@@ -1,2 +1,14 @@
 @import '../default.scss';
 
+@mixin submit-error() {
+  .submit-error{
+    color: red;
+    font-size: 12px;
+  }
+}
+
+@mixin disable-button {
+  .disable-button {
+    cursor: not-allowed;
+  }
+}

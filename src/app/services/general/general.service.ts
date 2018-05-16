@@ -7,6 +7,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GeneralService {
   private usersUrl = 'app/users';
+  private profiles = [
+    {value: 'ADMIN', viewValue: 'Administrador'},
+    {value: 'USER', viewValue: 'Usuário'}
+  ];
 
   constructor(private http: HttpClient) { }
 
@@ -62,5 +66,9 @@ export class GeneralService {
   private handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);
     return res.error;
+  }
+
+  getProfiles() {
+    return this.profiles;
   }
 }
