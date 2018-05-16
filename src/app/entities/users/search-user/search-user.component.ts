@@ -28,10 +28,10 @@ export class SearchUserComponent implements OnInit {
   ngOnInit() {
     this.fillUsers();
     this.users.subscribe(users => {
-      console.log(users);
       this.usersEmit.emit({users: users, term: this.term});
     }, err => {
       console.log(err);
+      this.usersEmit.emit({users: [], term: null});
     });
   }
 

@@ -59,11 +59,7 @@ export class UsersComponent implements OnInit {
   }
 
   searchedUsers(research) {
-    console.log(research);
-    this.users = null;
     if (research['term']) {
-
-      // this.users = ;
       this.users = []
       for (let user in research['users']) {
         let tempUser = research['users'][user];
