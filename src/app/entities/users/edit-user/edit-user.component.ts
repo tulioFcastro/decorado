@@ -16,8 +16,8 @@ export class EditUserComponent implements OnInit {
   @Output() editedUserEmmiter = new EventEmitter();
   form: FormGroup;
   submitError;
+  hide = true;
   profiles;
-
   profileSelected;
 
   constructor(private fb: FormBuilder,
