@@ -9,7 +9,8 @@ import {
   NotFoundComponent,
   NewUserComponent,
   DeleteUserComponent,
-  EditUserComponent
+  EditUserComponent,
+  SearchUserComponent
 } from './';
 import { SharedModule } from '../shared/shared.module';
 
@@ -25,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
     NotFoundComponent,
     NewUserComponent,
     DeleteUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    SearchUserComponent
   ]
 })
 export class EntitiesModule {

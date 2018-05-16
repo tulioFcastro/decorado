@@ -58,4 +58,21 @@ export class UsersComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  searchedUsers(research) {
+    console.log(research);
+    this.users = null;
+    if (research['term']) {
+
+      // this.users = ;
+      this.users = []
+      for (let user in research['users']) {
+        let tempUser = research['users'][user];
+        tempUser['collapse'] = true;
+        this.users.push(tempUser);
+      }
+    } else {
+      this.fetchUsers();
+    }
+  }
+
 }

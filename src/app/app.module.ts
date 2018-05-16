@@ -16,7 +16,8 @@ import {
 import {
   AuthService,
   GeneralService,
-  EventEmitterService
+  EventEmitterService,
+  UserSearchService
 } from './services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,9 +25,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { EntitiesModule } from './entities/entities.module';
 
 import {
-AuthGuard,
-LoginGuard
+  AuthGuard,
+  LoginGuard
 } from './auth';
+
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -53,7 +55,8 @@ import { SharedModule } from './shared/shared.module';
     LoginGuard,
     AuthService,
     GeneralService,
-    EventEmitterService
+    EventEmitterService,
+    UserSearchService
   ],
   bootstrap: [AppComponent]
 })

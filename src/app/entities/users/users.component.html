@@ -1,6 +1,11 @@
 <div class="container-users">
-  <div *ngIf="isAdminUser()" class="button-row">
-    <button mat-raised-button class="new-user" (click)="openModal(templateNewUser, null)">Novo Usuário</button>
+
+  <div class="row">
+    <div *ngIf="isAdminUser()" class="col align-self-start button-row">
+      <button mat-raised-button class="new-user" (click)="openModal(templateNewUser, null)">Novo Usuário</button>
+    </div>
+
+    <app-search-user class="col align-self-end" (usersEmit)="searchedUsers($event)"></app-search-user>
   </div>
 
   <div *ngFor="let user of users" class="card" aria-controls="collapseCard">
